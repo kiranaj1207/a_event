@@ -466,13 +466,13 @@
        ========================================================================== */
       .k-symbol-corner {
         position: fixed;
-        top: 8px;
-        right: 10px;
-        width: 18px;
-        height: 18px;
+        top: 6px;
+        right: 8px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         background: rgba(13, 19, 44, 0.85);
-        border: 1px solid rgba(34, 211, 238, 0.55);
+        border: 0.5px solid rgba(34, 211, 238, 0.45);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -480,9 +480,9 @@
         pointer-events: auto;
         cursor: pointer;
         user-select: none;
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        box-shadow: 0 0 4px rgba(34, 211, 238, 0.3);
         animation: kFloatPulse 2.8s ease-in-out infinite;
         transition:
           transform 0.25s ease,
@@ -492,42 +492,42 @@
 
       .k-symbol-char {
         font-family: var(--font-display), "JetBrains Mono", sans-serif;
-        font-size: 10px;
+        font-size: 7px;
         font-weight: 800;
         line-height: 1;
         color: var(--neon-cyan);
-        text-shadow: 0 0 6px var(--neon-cyan-glow);
+        text-shadow: 0 0 3px var(--neon-cyan-glow);
         display: inline-block;
         transition: all 0.25s ease;
         animation: kShimmer 2.8s ease-in-out infinite;
       }
 
       .k-symbol-corner:hover {
-        transform: scale(1.35) rotate(8deg);
+        transform: scale(1.2) rotate(6deg);
         border-color: var(--hot-magenta);
         box-shadow:
-          0 0 14px var(--magenta-glow),
-          0 0 6px var(--neon-cyan-glow);
+          0 0 8px var(--magenta-glow),
+          0 0 4px var(--neon-cyan-glow);
       }
 
       .k-symbol-corner:hover .k-symbol-char {
         color: #ffffff;
-        text-shadow: 0 0 8px var(--hot-magenta);
+        text-shadow: 0 0 5px var(--hot-magenta);
       }
 
       @keyframes kFloatPulse {
         0%,
         100% {
           transform: translateY(0) scale(1);
-          border-color: rgba(34, 211, 238, 0.5);
-          box-shadow: 0 0 6px rgba(34, 211, 238, 0.35);
+          border-color: rgba(34, 211, 238, 0.4);
+          box-shadow: 0 0 3px rgba(34, 211, 238, 0.25);
         }
         50% {
-          transform: translateY(-2px) scale(1.08);
-          border-color: rgba(244, 114, 182, 0.7);
+          transform: translateY(-1px) scale(1.05);
+          border-color: rgba(244, 114, 182, 0.6);
           box-shadow:
-            0 0 12px rgba(244, 114, 182, 0.5),
-            0 0 6px rgba(34, 211, 238, 0.4);
+            0 0 6px rgba(244, 114, 182, 0.4),
+            0 0 3px rgba(34, 211, 238, 0.3);
         }
       }
 
@@ -535,25 +535,25 @@
         0%,
         100% {
           color: var(--neon-cyan);
-          text-shadow: 0 0 5px rgba(34, 211, 238, 0.7);
+          text-shadow: 0 0 3px rgba(34, 211, 238, 0.6);
         }
         50% {
           color: #ffffff;
           text-shadow:
-            0 0 8px rgba(244, 114, 182, 0.8),
-            0 0 4px rgba(34, 211, 238, 0.7);
+            0 0 5px rgba(244, 114, 182, 0.7),
+            0 0 3px rgba(34, 211, 238, 0.6);
         }
       }
 
       @media (max-width: 768px) {
         .k-symbol-corner {
-          top: 6px;
-          right: 8px;
-          width: 16px;
-          height: 16px;
+          top: 5px;
+          right: 6px;
+          width: 10px;
+          height: 10px;
         }
         .k-symbol-char {
-          font-size: 9px;
+          font-size: 6px;
         }
       }
 
@@ -1534,6 +1534,10 @@
         position: relative;
       }
 
+      .round-card-content.round-3-card {
+        width: 48%;
+      }
+
       .round-pill-number {
         display: inline-flex;
         align-items: center;
@@ -2291,15 +2295,7 @@
         .nav-logo-divider {
           height: 38px;
         }
-      }
-
-      @media (max-width: 768px) {
-        .countdown-grid {
-          gap: 0.5rem;
-        }
-        .flip-num {
-          font-size: 1.8rem;
-        }
+        /* Timeline collapses to clean single column on tablets and mobile */
         .timeline-line {
           left: 20px;
         }
@@ -2310,12 +2306,72 @@
           justify-content: flex-start !important;
           padding-left: 50px;
           margin-bottom: 3.5rem;
-        }
-        .round-card-content {
           width: 100%;
+        }
+        .round-card-content,
+        .round-card-content.round-3-card {
+          width: 100% !important;
+          max-width: 100% !important;
         }
         .charts-split {
           grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .countdown-grid {
+          gap: 0.5rem;
+        }
+        .flip-num {
+          font-size: 1.8rem;
+        }
+        .timeline-line {
+          left: 16px;
+        }
+        .round-center-dot {
+          left: 16px;
+        }
+        .round-node-item {
+          justify-content: flex-start !important;
+          padding-left: 44px;
+          margin-bottom: 3rem;
+          width: 100%;
+        }
+        .round-card-content,
+        .round-card-content.round-3-card {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+        .round-card-title {
+          font-size: 1.35rem;
+          word-break: normal;
+        }
+        .dashboard-preview-card {
+          padding: 1.25rem 0.85rem;
+        }
+        .kpi-row {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.5rem;
+        }
+        .kpi-card {
+          padding: 0.6rem 0.4rem;
+        }
+        .kpi-name {
+          font-size: 0.62rem;
+        }
+        .kpi-value {
+          font-size: 1rem;
+        }
+        .kpi-trend {
+          font-size: 0.62rem;
+        }
+        .charts-split {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .chart-box-inner {
+          height: 175px;
+          padding: 0.5rem;
         }
         .bento-grid {
           grid-template-columns: 1fr;
@@ -2372,11 +2428,68 @@
           padding: 0.35rem 0.75rem;
           text-align: center;
         }
+        .timeline-line {
+          left: 12px;
+        }
+        .round-center-dot {
+          left: 12px;
+          width: 20px;
+          height: 20px;
+          top: 1.25rem;
+        }
+        .round-node-item {
+          padding-left: 32px;
+          margin-bottom: 2.5rem;
+        }
+        .round-card-content,
+        .round-card-content.round-3-card {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+        .round-card-title {
+          font-size: 1.2rem;
+        }
+        .round-card-desc {
+          font-size: 0.88rem;
+          line-height: 1.6;
+        }
+        .dashboard-preview-card {
+          padding: 1rem 0.6rem;
+        }
+        .kpi-row {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 0.35rem;
+        }
+        .kpi-card {
+          padding: 0.5rem 0.25rem;
+        }
+        .kpi-name {
+          font-size: 0.55rem;
+        }
+        .kpi-value {
+          font-size: 0.88rem;
+          margin-top: 0.1rem;
+        }
+        .kpi-trend {
+          font-size: 0.55rem;
+        }
+        .chart-box-inner {
+          height: 160px;
+        }
         .floating-reg-btn {
           bottom: 1.25rem;
           right: 1.25rem;
           padding: 0.75rem 1.25rem;
           font-size: 0.8rem;
+        }
+        .k-symbol-corner {
+          top: 4px;
+          right: 5px;
+          width: 9px;
+          height: 9px;
+        }
+        .k-symbol-char {
+          font-size: 5.5px;
         }
       }
     </style>
@@ -2988,7 +3101,7 @@
           <!-- ROUND 3 (WITH LIVE INTERACTIVE MINI DASHBOARD) -->
           <div class="round-node-item">
             <div class="round-center-dot"></div>
-            <div class="round-card-content glass-card" style="width: 48%">
+            <div class="round-card-content glass-card round-3-card">
               <span class="round-pill-number">Stage 03 • 75 Mins</span>
               <h3 class="round-card-title">
                 Round 3 – Data Visualization Challenge
