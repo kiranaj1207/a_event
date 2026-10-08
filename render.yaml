@@ -1,0 +1,60 @@
+services:
+  - type: web
+    name: imarticus-datathon-2026
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_ORIGIN
+        value: "*"
+      - key: GOOGLE_FORM_ACTION_URL
+        value: https://docs.google.com/forms/d/e/1FAIpQLScuXoumlmaV712ZRpSC8tDow-XgNP2dFmgwrnKSe4Umb4Oj2A/formResponse
+      - key: GOOGLE_FORM_TEAM_NAME_ENTRY
+        value: entry.532720504
+      - key: GOOGLE_FORM_COURSE_ENTRY
+        value: entry.1505841488
+      - key: GOOGLE_FORM_YEAR_ENTRY
+        value: entry.471912979
+      - key: GOOGLE_FORM_LEADER_NAME_ENTRY
+        value: entry.95054344
+      - key: GOOGLE_FORM_LEADER_REGNO_ENTRY
+        value: entry.1311668077
+      - key: GOOGLE_FORM_LEADER_EMAIL_ENTRY
+        value: entry.1169441784
+      - key: GOOGLE_FORM_LEADER_PHONE_ENTRY
+        value: entry.1786431928
+      - key: GOOGLE_FORM_TEAM_SIZE_ENTRY
+        value: entry.212519596
+      - key: GOOGLE_FORM_T2_MEMBER2_NAME_ENTRY
+        value: entry.197190944
+      - key: GOOGLE_FORM_T2_MEMBER2_REGNO_ENTRY
+        value: entry.900469978
+      - key: GOOGLE_FORM_T3_MEMBER2_NAME_ENTRY
+        value: entry.470766011
+      - key: GOOGLE_FORM_T3_MEMBER2_REGNO_ENTRY
+        value: entry.806985892
+      - key: GOOGLE_FORM_T3_MEMBER3_NAME_ENTRY
+        value: entry.670603800
+      - key: GOOGLE_FORM_T3_MEMBER3_REGNO_ENTRY
+        value: entry.77314024
+      - key: GOOGLE_FORM_T4_MEMBER2_NAME_ENTRY
+        value: entry.233709409
+      - key: GOOGLE_FORM_T4_MEMBER2_REGNO_ENTRY
+        value: entry.1511120998
+      - key: GOOGLE_FORM_T4_MEMBER3_NAME_ENTRY
+        value: entry.604928895
+      - key: GOOGLE_FORM_T4_MEMBER3_REGNO_ENTRY
+        value: entry.396290915
+      - key: GOOGLE_FORM_T4_MEMBER4_NAME_ENTRY
+        value: entry.381545999
+      - key: GOOGLE_FORM_T4_MEMBER4_REGNO_ENTRY
+        value: entry.1181572906
+      - key: GOOGLE_FORM_CONFIRMATION_ENTRY
+        value: entry.2117435691
+      - key: GOOGLE_FORM_CONFIRMATION_TEXT
+        value: "I confirm that our team has 2–4 students and the information provided is accurate."

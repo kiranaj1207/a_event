@@ -2109,6 +2109,495 @@
       }
 
       /* ==========================================================================
+       NATIVE REGISTRATION FORM STYLES
+       ========================================================================== */
+      .reg-form-card {
+        background: rgba(13, 19, 44, 0.78);
+        border: 1px solid var(--border-glass);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: clamp(1.5rem, 4vw, 3rem);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.15);
+        position: relative;
+        overflow: hidden;
+        text-align: left;
+        margin-top: 2rem;
+      }
+
+      .reg-form-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--neon-cyan), var(--electric-violet), var(--hot-magenta));
+      }
+
+      .step-progress-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2.5rem;
+        position: relative;
+        gap: 1rem;
+      }
+
+      .step-pill {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.85rem 1.25rem;
+        background: rgba(5, 8, 22, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        color: var(--text-dim);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+      }
+
+      .step-pill.active {
+        background: rgba(124, 58, 237, 0.18);
+        border-color: var(--neon-cyan);
+        color: var(--text-main);
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+      }
+
+      .step-pill.completed {
+        border-color: var(--emerald-accent);
+        color: var(--emerald-accent);
+      }
+
+      .step-pill-num {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+
+      .step-pill.active .step-pill-num {
+        background: var(--neon-cyan);
+        color: #050816;
+        box-shadow: 0 0 10px var(--neon-cyan-glow);
+      }
+
+      .step-pill.completed .step-pill-num {
+        background: var(--emerald-accent);
+        color: #ffffff;
+      }
+
+      .form-step-panel {
+        display: none;
+      }
+
+      .form-step-panel.active {
+        display: block;
+        animation: fadeInStep 0.35s ease;
+      }
+
+      @keyframes fadeInStep {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .form-grid-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+
+      .form-grid-3col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.4rem;
+        position: relative;
+      }
+
+      .form-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: var(--font-display);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #e2e8f0;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.02em;
+      }
+
+      .form-label .req {
+        color: var(--neon-cyan);
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 0.85rem 1.15rem;
+        background: rgba(5, 8, 22, 0.65);
+        border: 1px solid rgba(124, 58, 237, 0.35);
+        border-radius: 10px;
+        color: #ffffff;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        transition: all 0.25s ease;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--neon-cyan);
+        background: rgba(13, 19, 44, 0.85);
+        box-shadow: 0 0 12px var(--neon-cyan-glow);
+      }
+
+      .form-input.is-invalid {
+        border-color: #ef4444 !important;
+        box-shadow: 0 0 8px rgba(239, 68, 68, 0.4) !important;
+      }
+
+      .error-hint {
+        color: #f87171;
+        font-family: var(--font-mono);
+        font-size: 0.76rem;
+        margin-top: 0.35rem;
+        display: none;
+      }
+
+      .error-hint.visible {
+        display: block;
+      }
+
+      .chips-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .chip-btn {
+        padding: 0.6rem 1.1rem;
+        background: rgba(5, 8, 22, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        color: #94a3b8;
+        font-family: var(--font-mono);
+        font-size: 0.84rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+      }
+
+      .chip-btn:hover {
+        border-color: var(--neon-cyan);
+        color: #ffffff;
+        background: rgba(34, 211, 238, 0.08);
+      }
+
+      .chip-btn.selected {
+        background: rgba(124, 58, 237, 0.25);
+        border-color: var(--neon-cyan);
+        color: var(--neon-cyan);
+        font-weight: 700;
+        box-shadow: 0 0 12px var(--neon-cyan-glow);
+      }
+
+      .member-subcard {
+        background: rgba(5, 8, 22, 0.45);
+        border: 1px solid rgba(124, 58, 237, 0.25);
+        border-radius: 14px;
+        padding: 1.4rem;
+        margin-bottom: 1.25rem;
+        transition: all 0.35s ease;
+        overflow: hidden;
+      }
+
+      .member-subcard.hidden-member {
+        display: none;
+      }
+
+      .member-card-title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--neon-cyan);
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-bottom: 0.6rem;
+      }
+
+      .confirmation-checkbox-wrap {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+        padding: 1rem 1.25rem;
+        background: rgba(5, 8, 22, 0.5);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        cursor: pointer;
+      }
+
+      .confirmation-checkbox-wrap input[type="checkbox"] {
+        margin-top: 0.25rem;
+        width: 18px;
+        height: 18px;
+        accent-color: var(--electric-violet);
+        cursor: pointer;
+      }
+
+      .confirmation-checkbox-wrap label {
+        font-size: 0.88rem;
+        color: #cbd5e1;
+        cursor: pointer;
+        line-height: 1.5;
+      }
+
+      .form-actions-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .btn-back-step {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.5rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        color: #cbd5e1;
+        font-family: var(--font-display);
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-back-step:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .btn-submit-cyber {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0.95rem 2rem;
+        background: linear-gradient(135deg, var(--electric-violet), #581c87);
+        border: 1px solid var(--neon-cyan);
+        border-radius: 10px;
+        color: #ffffff;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px var(--electric-violet-glow);
+      }
+
+      .btn-submit-cyber:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 0 30px var(--electric-violet-glow), 0 0 15px var(--neon-cyan-glow);
+      }
+
+      .btn-submit-cyber:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+      }
+
+      .cyber-spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: var(--neon-cyan);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        display: none;
+      }
+
+      .btn-submit-cyber.loading .cyber-spinner {
+        display: inline-block;
+      }
+
+      .btn-submit-cyber.loading .btn-text-content {
+        opacity: 0.8;
+      }
+
+      .btn-submit-cyber.loading svg:not(.cyber-spinner) {
+        display: none;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .form-alert-box {
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .form-alert-box.alert-error {
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        color: #fca5a5;
+      }
+
+      .form-alert-box.visible {
+        display: flex;
+        animation: fadeInStep 0.3s ease;
+      }
+
+      .reg-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(3, 5, 15, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      .reg-modal-backdrop.open {
+        display: flex;
+        animation: fadeInStep 0.3s ease;
+      }
+
+      .reg-modal-card {
+        background: rgba(13, 19, 44, 0.95);
+        border: 1px solid var(--neon-cyan);
+        border-radius: 20px;
+        box-shadow: 0 0 40px rgba(34, 211, 238, 0.35), 0 25px 60px rgba(0, 0, 0, 0.8);
+        padding: clamp(1.8rem, 4vw, 3rem);
+        max-width: 580px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+      }
+
+      .reg-modal-icon-wrap {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(16, 185, 129, 0.15);
+        border: 2px solid var(--emerald-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        color: var(--emerald-accent);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+      }
+
+      .reg-modal-title {
+        font-family: var(--font-display);
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+      }
+
+      .reg-modal-sub {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1.8rem;
+        line-height: 1.6;
+      }
+
+      .reg-id-box {
+        background: rgba(5, 8, 22, 0.7);
+        border: 1px dashed var(--neon-cyan);
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .reg-id-label {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-dim);
+        letter-spacing: 0.1em;
+        margin-bottom: 0.35rem;
+      }
+
+      .reg-id-val {
+        font-family: var(--font-mono);
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--neon-cyan);
+        letter-spacing: 0.08em;
+      }
+
+      .reg-modal-team {
+        color: #e2e8f0;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+      }
+
+      .btn-copy-id {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(34, 211, 238, 0.1);
+        border: 1px solid var(--border-cyan);
+        border-radius: 6px;
+        color: var(--neon-cyan);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        cursor: pointer;
+        margin-top: 0.75rem;
+        transition: all 0.2s ease;
+      }
+
+      .btn-copy-id:hover {
+        background: var(--neon-cyan);
+        color: #050816;
+      }
+
+      @media (max-width: 768px) {
+        .form-grid-2col,
+        .form-grid-3col {
+          grid-template-columns: 1fr;
+        }
+        .step-pill span:not(.step-pill-num) {
+          display: none;
+        }
+        .form-actions-row {
+          flex-direction: column-reverse;
+        }
+        .btn-back-step,
+        .btn-submit-cyber {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      /* ==========================================================================
        FOOTER
        ========================================================================== */
       .site-footer {
@@ -4026,90 +4515,289 @@
             reach campus capacity.
           </p>
 
-          <!-- High-Impact Glass Portal Card -->
-          <div class="reg-portal-card glass-card">
-            <div class="portal-badge-wrap">
+          <!-- High-Impact Glass Registration Form Portal -->
+          <div class="reg-form-card" id="reg-portal-container">
+            <div class="portal-badge-wrap" style="margin-bottom: 1.5rem">
               <span class="badge-signal-pulse"></span>
-              <span>OFFICIAL REGISTRATION PORTAL</span>
+              <span>DATATHON REGISTRATION PROTOCOL // 2026</span>
             </div>
 
-            <h3 class="portal-heading">Quick 2-Minute Team Registration</h3>
-            <p class="portal-desc">
-              Click the button below to register your team. Please ensure your
-              Team Leader has all teammate names and contact details ready.
+            <h3 class="portal-heading" style="text-align:center;">Official Team Registration</h3>
+            <p class="portal-desc" style="text-align:center;">
+              Complete the verified team registration below. Only one submission per team is required.
             </p>
 
             <div class="portal-perks-row">
               <div class="portal-perk-item">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#22D3EE"
-                  stroke-width="2.5"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
                 <span>100% Free Entry</span>
               </div>
               <div class="portal-perk-item">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#22D3EE"
-                  stroke-width="2.5"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
                 <span>Teams of 2 to 4</span>
               </div>
               <div class="portal-perk-item">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#22D3EE"
-                  stroke-width="2.5"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2.5"><polyline points="20 6 9 17 4 12" /></svg>
                 <span>Instant Confirmation</span>
               </div>
             </div>
 
-            <a
-              href="https://forms.gle/Xj9ErxgknY3tKVEB6"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary btn-portal-launch google-form-btn"
-            >
-              <span>Register Now</span>
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
+            <!-- Error Notification Banner -->
+            <div class="form-alert-box alert-error" id="regErrorBanner" role="alert">
+              <div style="display:flex; align-items:center; gap:0.6rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span id="regErrorMessage">Registration failed. Please check your details and try again.</span>
+              </div>
+              <button type="button" class="btn-copy-id" id="dismissAlertBtn" style="margin:0; padding:0.3rem 0.6rem;">Dismiss</button>
+            </div>
 
-            <div class="portal-note">
-              <span
-                >⚡ Open to all undergraduate & postgraduate students
-                nationwide</span
-              >
+            <!-- Step Progress Indicator -->
+            <div class="step-progress-bar">
+              <div class="step-pill active" id="stepPill1">
+                <span class="step-pill-num">1</span>
+                <span>Team & Leader Info</span>
+              </div>
+              <div class="step-pill" id="stepPill2">
+                <span class="step-pill-num">2</span>
+                <span>Teammate Roster</span>
+              </div>
+            </div>
+
+            <form id="eventRegForm" novalidate autocomplete="off">
+              <!-- Hidden Honeypot Field for Bot Prevention -->
+              <input type="text" name="website_source_hp" id="regHoneypot" style="display:none!important;" tabindex="-1" autocomplete="off" />
+
+              <!-- STEP 1: TEAM & LEADER DETAILS -->
+              <div class="form-step-panel active" id="formStep1">
+                <div class="form-group">
+                  <label class="form-label" for="teamName">
+                    <span>Team Name <span class="req">*</span></span>
+                    <span class="text-dim" style="font-size:0.75rem; font-family:var(--font-mono);">2–60 chars</span>
+                  </label>
+                  <input type="text" class="form-input" id="teamName" name="teamName" placeholder="e.g. Data Titans" required maxlength="60" />
+                  <div class="error-hint" id="err-teamName">Please enter a team name (at least 2 characters).</div>
+                </div>
+
+                <div class="form-grid-2col">
+                  <!-- Course Selector -->
+                  <div class="form-group">
+                    <label class="form-label">Course <span class="req">*</span></label>
+                    <div class="chips-row" id="courseChips">
+                      <button type="button" class="chip-btn" data-value="BCA">BCA</button>
+                      <button type="button" class="chip-btn" data-value="MCA">MCA</button>
+                      <button type="button" class="chip-btn" data-value="BBA">BBA</button>
+                      <button type="button" class="chip-btn" data-value="BCOM">BCOM</button>
+                      <button type="button" class="chip-btn" data-value="MBA">MBA</button>
+                      <button type="button" class="chip-btn" data-value="BBA AVIATION">BBA AVIATION</button>
+                    </div>
+                    <input type="hidden" id="selectedCourse" name="course" required />
+                    <div class="error-hint" id="err-course">Please select a course from the options.</div>
+                  </div>
+
+                  <!-- Year Selector -->
+                  <div class="form-group">
+                    <label class="form-label">Year of Study <span class="req">*</span></label>
+                    <div class="chips-row" id="yearChips">
+                      <button type="button" class="chip-btn" data-value="1st year">1st year</button>
+                      <button type="button" class="chip-btn" data-value="2nd year">2nd year</button>
+                      <button type="button" class="chip-btn" data-value="3rd year">3rd year</button>
+                    </div>
+                    <input type="hidden" id="selectedYear" name="year" required />
+                    <div class="error-hint" id="err-year">Please select your year of study.</div>
+                  </div>
+                </div>
+
+                <!-- Team Size Selector -->
+                <div class="form-group" style="margin-top: 0.5rem;">
+                  <label class="form-label">Team Size <span class="req">*</span> <span style="font-weight:400; font-size:0.8rem; color:var(--text-muted);">(including leader: 2, 3, or 4 students)</span></label>
+                  <div class="chips-row" id="teamSizeChips">
+                    <button type="button" class="chip-btn selected" data-value="2">2 Students (Leader + 1)</button>
+                    <button type="button" class="chip-btn" data-value="3">3 Students (Leader + 2)</button>
+                    <button type="button" class="chip-btn" data-value="4">4 Students (Leader + 3)</button>
+                  </div>
+                  <input type="hidden" id="selectedTeamSize" name="teamSize" value="2" required />
+                  <div class="error-hint" id="err-teamSize">Please select team size.</div>
+                </div>
+
+                <div style="margin: 2rem 0 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem;">
+                  <h4 style="font-family:var(--font-display); font-size:1.05rem; color:var(--neon-cyan); margin-bottom: 0.4rem;">
+                    Team Leader Information
+                  </h4>
+                  <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom: 1.2rem;">
+                    Primary contact point for competition rounds, schedules, and official notices.
+                  </p>
+                </div>
+
+                <div class="form-grid-2col">
+                  <div class="form-group">
+                    <label class="form-label" for="leaderName">Leader Full Name <span class="req">*</span></label>
+                    <input type="text" class="form-input" id="leaderName" name="leaderName" placeholder="Full name as per college record" required maxlength="80" />
+                    <div class="error-hint" id="err-leaderName">Please enter team leader's full name.</div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="leaderRegNo">Leader Registration No. <span class="req">*</span></label>
+                    <input type="text" class="form-input" id="leaderRegNo" name="leaderRegNo" placeholder="College Reg / Roll No." required maxlength="40" />
+                    <div class="error-hint" id="err-leaderRegNo">Please enter team leader's registration number.</div>
+                  </div>
+                </div>
+
+                <div class="form-grid-2col">
+                  <div class="form-group">
+                    <label class="form-label" for="leaderEmail">Leader Official Email <span class="req">*</span></label>
+                    <input type="email" class="form-input" id="leaderEmail" name="leaderEmail" placeholder="student@college.edu or email@domain.com" required maxlength="80" />
+                    <div class="error-hint" id="err-leaderEmail">Please provide a valid email address.</div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="leaderPhone">Leader Phone Number <span class="req">*</span></label>
+                    <input type="tel" class="form-input" id="leaderPhone" name="leaderPhone" placeholder="10-digit mobile number (e.g. 9876543210)" required maxlength="15" />
+                    <div class="error-hint" id="err-leaderPhone">Please enter a valid 10-digit Indian phone number (starting with 6-9).</div>
+                  </div>
+                </div>
+
+                <div class="form-actions-row" style="justify-content: flex-end;">
+                  <button type="button" class="btn-submit-cyber" id="btnNextStep">
+                    <span class="btn-text-content">Next: Teammate Details</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 2: TEAM MEMBERS DETAILS -->
+              <div class="form-step-panel" id="formStep2">
+                <div style="background:rgba(34, 211, 238, 0.08); border:1px solid var(--border-cyan); border-radius:10px; padding:0.9rem 1.2rem; margin-bottom:1.5rem;">
+                  <p style="color:#e2e8f0; font-size:0.88rem; margin:0; line-height: 1.5;">
+                    Enter the other team members' details below. <strong style="color:var(--neon-cyan);">Do not enter the team leader again.</strong>
+                  </p>
+                </div>
+
+                <!-- Member 2 (Always required) -->
+                <div class="member-subcard" id="cardMember2">
+                  <div class="member-card-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    <span>Team Member 2</span>
+                  </div>
+                  <div class="form-grid-2col">
+                    <div class="form-group">
+                      <label class="form-label" for="member2Name">Full Name <span class="req">*</span></label>
+                      <input type="text" class="form-input" id="member2Name" name="member2Name" placeholder="Full Name" required maxlength="80" />
+                      <div class="error-hint" id="err-member2Name">Member 2 full name is required.</div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="member2RegNo">Registration No. <span class="req">*</span></label>
+                      <input type="text" class="form-input" id="member2RegNo" name="member2RegNo" placeholder="College Reg No." required maxlength="40" />
+                      <div class="error-hint" id="err-member2RegNo">Member 2 registration number is required.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Member 3 (Shown if Team Size >= 3) -->
+                <div class="member-subcard hidden-member" id="cardMember3">
+                  <div class="member-card-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    <span>Team Member 3</span>
+                  </div>
+                  <div class="form-grid-2col">
+                    <div class="form-group">
+                      <label class="form-label" for="member3Name">Full Name <span class="req">*</span></label>
+                      <input type="text" class="form-input" id="member3Name" name="member3Name" placeholder="Full Name" maxlength="80" />
+                      <div class="error-hint" id="err-member3Name">Member 3 full name is required.</div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="member3RegNo">Registration No. <span class="req">*</span></label>
+                      <input type="text" class="form-input" id="member3RegNo" name="member3RegNo" placeholder="College Reg No." maxlength="40" />
+                      <div class="error-hint" id="err-member3RegNo">Member 3 registration number is required.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Member 4 (Shown if Team Size == 4) -->
+                <div class="member-subcard hidden-member" id="cardMember4">
+                  <div class="member-card-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    <span>Team Member 4</span>
+                  </div>
+                  <div class="form-grid-2col">
+                    <div class="form-group">
+                      <label class="form-label" for="member4Name">Full Name <span class="req">*</span></label>
+                      <input type="text" class="form-input" id="member4Name" name="member4Name" placeholder="Full Name" maxlength="80" />
+                      <div class="error-hint" id="err-member4Name">Member 4 full name is required.</div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="member4RegNo">Registration No. <span class="req">*</span></label>
+                      <input type="text" class="form-input" id="member4RegNo" name="member4RegNo" placeholder="College Reg No." maxlength="40" />
+                      <div class="error-hint" id="err-member4RegNo">Member 4 registration number is required.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Final Confirmation Checkbox -->
+                <div class="confirmation-checkbox-wrap" id="confirmWrap">
+                  <input type="checkbox" id="confirmAccuracy" name="confirmAccuracy" required />
+                  <label for="confirmAccuracy">
+                    I confirm that our team has 2–4 students and the information provided is accurate.
+                  </label>
+                </div>
+                <div class="error-hint" id="err-confirmAccuracy" style="margin-top:-0.8rem; margin-bottom:1.4rem;">You must confirm this declaration before submitting.</div>
+
+                <div class="form-actions-row">
+                  <button type="button" class="btn-back-step" id="btnBackStep">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    <span>Back to Team Details</span>
+                  </button>
+
+                  <button type="submit" class="btn-submit-cyber" id="btnSubmitRegistration">
+                    <span class="cyber-spinner" id="submitSpinner"></span>
+                    <span class="btn-text-content" id="submitBtnText">Confirm & Submit Registration</span>
+                    <svg id="submitRocketIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="portal-note" style="text-align:center;">
+              <span>⚡ IMARTICUS DATATHON 2026 • Conducted by SoIT on 14 October 2026 • 100% Free Entry</span>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Registration Success Modal Dialog -->
+    <div class="reg-modal-backdrop" id="regSuccessModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <div class="reg-modal-card">
+        <div class="reg-modal-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h3 class="reg-modal-title" id="successTitle">✓ Registration Successful</h3>
+        <p class="reg-modal-sub">
+          Thank you for registering for <strong>IMARTICUS DATATHON 2026</strong>.<br />
+          Your team’s spot on the competition floor has been officially reserved.
+        </p>
+
+        <div class="reg-id-box">
+          <div class="reg-id-label">OFFICIAL REGISTRATION IDENTIFIER</div>
+          <div class="reg-id-val" id="modalRegId">REG-2026-0001</div>
+          <div class="reg-modal-team">Team: <strong id="modalTeamName" style="color:#ffffff;">Team Alpha</strong></div>
+          <button type="button" class="btn-copy-id" id="copyRegIdBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="copyBtnText">Copy Registration ID</span>
+          </button>
+        </div>
+
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:1.5rem; line-height:1.5;">
+          Event Date: <strong>14 October 2026</strong> • Venue: Offline on campus.<br />
+          Please save your Registration ID for check-in on the event day.
+        </p>
+
+        <button type="button" class="btn-submit-cyber" id="closeSuccessModalBtn" style="width:100%; justify-content:center;">
+          Back to Event
+        </button>
+      </div>
+    </div>
 
     <!-- ==========================================================================
        10. FOOTER
@@ -4329,23 +5017,28 @@
         taglines: ["Analyse.", "Visualise.", "Present.", "Win."],
         taglineSpeedMs: 2200,
 
-        // ────────────────────────────────────────────────────────────────────────
-        // PASTE YOUR OFFICIAL GOOGLE FORM URL HERE:
-        // When students click any "Register" button, they will be taken here!
-        // ────────────────────────────────────────────────────────────────────────
-        googleFormUrl: "https://forms.gle/Xj9ErxgknY3tKVEB6",
       };
 
-      // Auto-bind all Registration buttons across the site to the Google Form URL
-      function updateGoogleFormLinks() {
-        const formButtons = document.querySelectorAll(".google-form-btn");
-        formButtons.forEach((btn) => {
-          btn.href = DATHON_CONFIG.googleFormUrl;
-          btn.target = "_blank";
-          btn.rel = "noopener noreferrer";
+      // Direct all registration CTA links smoothly to the on-page registration portal
+      function setupRegistrationScrollLinks() {
+        const regButtons = document.querySelectorAll(".google-form-btn, a[href='#register']");
+        regButtons.forEach((btn) => {
+          btn.removeAttribute("target");
+          btn.removeAttribute("rel");
+          btn.addEventListener("click", (e) => {
+            const regTarget = document.getElementById("register");
+            if (regTarget) {
+              e.preventDefault();
+              regTarget.scrollIntoView({ behavior: "smooth" });
+              setTimeout(() => {
+                const teamNameInput = document.getElementById("teamName");
+                if (teamNameInput) teamNameInput.focus();
+              }, 500);
+            }
+          });
         });
       }
-      updateGoogleFormLinks();
+      setupRegistrationScrollLinks();
 
       // ══════════════════════════════════════════════════════════════════════════
       // 1. PRELOADER COUNTDOWN & CINEMATIC CURTAIN REVEAL
@@ -4914,6 +5607,497 @@
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
       }
+
+      // ══════════════════════════════════════════════════════════════════════════
+      // 13. NATIVE REGISTRATION FORM CONTROLLER (IMARTICUS DATATHON 2026)
+      // ══════════════════════════════════════════════════════════════════════════
+      (function initRegistrationSystem() {
+        const regForm = document.getElementById("eventRegForm");
+        if (!regForm) return;
+
+        const step1Panel = document.getElementById("formStep1");
+        const step2Panel = document.getElementById("formStep2");
+        const stepPill1 = document.getElementById("stepPill1");
+        const stepPill2 = document.getElementById("stepPill2");
+        const btnNextStep = document.getElementById("btnNextStep");
+        const btnBackStep = document.getElementById("btnBackStep");
+        const btnSubmit = document.getElementById("btnSubmitRegistration");
+        const submitSpinner = document.getElementById("submitSpinner");
+        const submitBtnText = document.getElementById("submitBtnText");
+        const regErrorBanner = document.getElementById("regErrorBanner");
+        const regErrorMessage = document.getElementById("regErrorMessage");
+        const dismissAlertBtn = document.getElementById("dismissAlertBtn");
+
+        // Modal Elements
+        const successModal = document.getElementById("regSuccessModal");
+        const modalRegId = document.getElementById("modalRegId");
+        const modalTeamName = document.getElementById("modalTeamName");
+        const copyRegIdBtn = document.getElementById("copyRegIdBtn");
+        const copyBtnText = document.getElementById("copyBtnText");
+        const closeSuccessModalBtn = document.getElementById("closeSuccessModalBtn");
+
+        // Dynamic Teammate Cards
+        const cardMember2 = document.getElementById("cardMember2");
+        const cardMember3 = document.getElementById("cardMember3");
+        const cardMember4 = document.getElementById("cardMember4");
+
+        // Inputs & Chips
+        const selectedCourseInput = document.getElementById("selectedCourse");
+        const selectedYearInput = document.getElementById("selectedYear");
+        const selectedTeamSizeInput = document.getElementById("selectedTeamSize");
+
+        // Setup Chip Selectors
+        function bindChipGroup(containerId, hiddenInput, onSelectCallback) {
+          const container = document.getElementById(containerId);
+          if (!container) return;
+          const chips = container.querySelectorAll(".chip-btn");
+          chips.forEach((chip) => {
+            chip.addEventListener("click", () => {
+              chips.forEach((c) => c.classList.remove("selected"));
+              chip.classList.add("selected");
+              const val = chip.getAttribute("data-value");
+              hiddenInput.value = val;
+              hideError("err-" + hiddenInput.id.replace("selected", "").toLowerCase());
+              if (onSelectCallback) onSelectCallback(val);
+            });
+          });
+        }
+
+        // Bind Course Chips
+        bindChipGroup("courseChips", selectedCourseInput);
+
+        // Bind Year Chips
+        bindChipGroup("yearChips", selectedYearInput);
+
+        // Bind Team Size Chips with Dynamic Member Card Expansion
+        bindChipGroup("teamSizeChips", selectedTeamSizeInput, (newSize) => {
+          updateTeamSizeCards(parseInt(newSize, 10));
+        });
+
+        function updateTeamSizeCards(size) {
+          if (size === 2) {
+            cardMember3.classList.add("hidden-member");
+            cardMember4.classList.add("hidden-member");
+            clearMemberInputs(3);
+            clearMemberInputs(4);
+          } else if (size === 3) {
+            cardMember3.classList.remove("hidden-member");
+            cardMember4.classList.add("hidden-member");
+            clearMemberInputs(4);
+          } else if (size === 4) {
+            cardMember3.classList.remove("hidden-member");
+            cardMember4.classList.remove("hidden-member");
+          }
+        }
+
+        function clearMemberInputs(memberNum) {
+          const nameInput = document.getElementById(`member${memberNum}Name`);
+          const regInput = document.getElementById(`member${memberNum}RegNo`);
+          if (nameInput) {
+            nameInput.value = "";
+            nameInput.classList.remove("is-invalid");
+          }
+          if (regInput) {
+            regInput.value = "";
+            regInput.classList.remove("is-invalid");
+          }
+          hideError(`err-member${memberNum}Name`);
+          hideError(`err-member${memberNum}RegNo`);
+        }
+
+        // Inline Validation Helpers
+        function showError(errorId, inputId) {
+          const errEl = document.getElementById(errorId);
+          if (errEl) errEl.classList.add("visible");
+          if (inputId) {
+            const inputEl = document.getElementById(inputId);
+            if (inputEl) inputEl.classList.add("is-invalid");
+          }
+        }
+
+        function hideError(errorId, inputId) {
+          const errEl = document.getElementById(errorId);
+          if (errEl) errEl.classList.remove("visible");
+          if (inputId) {
+            const inputEl = document.getElementById(inputId);
+            if (inputEl) inputEl.classList.remove("is-invalid");
+          }
+        }
+
+        // Input change cleanup
+        [
+          "teamName", "leaderName", "leaderRegNo", "leaderEmail", "leaderPhone",
+          "member2Name", "member2RegNo", "member3Name", "member3RegNo", "member4Name", "member4RegNo"
+        ].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.addEventListener("input", () => hideError("err-" + id, id));
+          }
+        });
+
+        // Step 1 Validation
+        function validateStep1() {
+          let isValid = true;
+          let firstInvalid = null;
+
+          const teamName = document.getElementById("teamName");
+          if (!teamName.value.trim() || teamName.value.trim().length < 2) {
+            showError("err-teamName", "teamName");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = teamName;
+          }
+
+          if (!selectedCourseInput.value) {
+            showError("err-course");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = document.getElementById("courseChips");
+          }
+
+          if (!selectedYearInput.value) {
+            showError("err-year");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = document.getElementById("yearChips");
+          }
+
+          if (!selectedTeamSizeInput.value) {
+            showError("err-teamSize");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = document.getElementById("teamSizeChips");
+          }
+
+          const leaderName = document.getElementById("leaderName");
+          if (!leaderName.value.trim()) {
+            showError("err-leaderName", "leaderName");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = leaderName;
+          }
+
+          const leaderRegNo = document.getElementById("leaderRegNo");
+          if (!leaderRegNo.value.trim()) {
+            showError("err-leaderRegNo", "leaderRegNo");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = leaderRegNo;
+          }
+
+          const leaderEmail = document.getElementById("leaderEmail");
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(leaderEmail.value.trim())) {
+            showError("err-leaderEmail", "leaderEmail");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = leaderEmail;
+          }
+
+          const leaderPhone = document.getElementById("leaderPhone");
+          const phoneDigits = leaderPhone.value.replace(/\D/g, "");
+          const isPhoneValid = (phoneDigits.length === 10 && /^[6-9]\d{9}$/.test(phoneDigits)) ||
+                               (phoneDigits.length === 12 && phoneDigits.startsWith("91") && /^[6-9]\d{9}$/.test(phoneDigits.slice(2)));
+          if (!isPhoneValid) {
+            showError("err-leaderPhone", "leaderPhone");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = leaderPhone;
+          }
+
+          if (!isValid && firstInvalid && typeof firstInvalid.focus === "function") {
+            firstInvalid.focus();
+          }
+
+          return isValid;
+        }
+
+        // Step Navigation Events
+        btnNextStep.addEventListener("click", () => {
+          if (validateStep1()) {
+            step1Panel.classList.remove("active");
+            step2Panel.classList.add("active");
+            stepPill1.classList.remove("active");
+            stepPill1.classList.add("completed");
+            stepPill2.classList.add("active");
+            document.getElementById("reg-portal-container").scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+
+        btnBackStep.addEventListener("click", () => {
+          step2Panel.classList.remove("active");
+          step1Panel.classList.add("active");
+          stepPill2.classList.remove("active");
+          stepPill1.classList.remove("completed");
+          stepPill1.classList.add("active");
+          document.getElementById("reg-portal-container").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        // Step 2 Validation
+        function validateStep2() {
+          let isValid = true;
+          let firstInvalid = null;
+          const teamSize = parseInt(selectedTeamSizeInput.value, 10);
+          const leaderRegNo = document.getElementById("leaderRegNo").value.trim().toLowerCase();
+          const usedRegNos = new Set([leaderRegNo]);
+
+          // Member 2
+          const m2Name = document.getElementById("member2Name");
+          const m2Reg = document.getElementById("member2RegNo");
+          if (!m2Name.value.trim()) {
+            showError("err-member2Name", "member2Name");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = m2Name;
+          }
+          if (!m2Reg.value.trim()) {
+            showError("err-member2RegNo", "member2RegNo");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = m2Reg;
+          } else {
+            const cleanReg = m2Reg.value.trim().toLowerCase();
+            if (usedRegNos.has(cleanReg)) {
+              showError("err-member2RegNo", "member2RegNo");
+              document.getElementById("err-member2RegNo").textContent = "Duplicate registration number inside team.";
+              isValid = false;
+              if (!firstInvalid) firstInvalid = m2Reg;
+            } else {
+              usedRegNos.add(cleanReg);
+            }
+          }
+
+          // Member 3
+          if (teamSize >= 3) {
+            const m3Name = document.getElementById("member3Name");
+            const m3Reg = document.getElementById("member3RegNo");
+            if (!m3Name.value.trim()) {
+              showError("err-member3Name", "member3Name");
+              isValid = false;
+              if (!firstInvalid) firstInvalid = m3Name;
+            }
+            if (!m3Reg.value.trim()) {
+              showError("err-member3RegNo", "member3RegNo");
+              isValid = false;
+              if (!firstInvalid) firstInvalid = m3Reg;
+            } else {
+              const cleanReg = m3Reg.value.trim().toLowerCase();
+              if (usedRegNos.has(cleanReg)) {
+                showError("err-member3RegNo", "member3RegNo");
+                document.getElementById("err-member3RegNo").textContent = "Duplicate registration number inside team.";
+                isValid = false;
+                if (!firstInvalid) firstInvalid = m3Reg;
+              } else {
+                usedRegNos.add(cleanReg);
+              }
+            }
+          }
+
+          // Member 4
+          if (teamSize === 4) {
+            const m4Name = document.getElementById("member4Name");
+            const m4Reg = document.getElementById("member4RegNo");
+            if (!m4Name.value.trim()) {
+              showError("err-member4Name", "member4Name");
+              isValid = false;
+              if (!firstInvalid) firstInvalid = m4Name;
+            }
+            if (!m4Reg.value.trim()) {
+              showError("err-member4RegNo", "member4RegNo");
+              isValid = false;
+              if (!firstInvalid) firstInvalid = m4Reg;
+            } else {
+              const cleanReg = m4Reg.value.trim().toLowerCase();
+              if (usedRegNos.has(cleanReg)) {
+                showError("err-member4RegNo", "member4RegNo");
+                document.getElementById("err-member4RegNo").textContent = "Duplicate registration number inside team.";
+                isValid = false;
+                if (!firstInvalid) firstInvalid = m4Reg;
+              } else {
+                usedRegNos.add(cleanReg);
+              }
+            }
+          }
+
+          // Accuracy Checkbox
+          const confirmAccuracy = document.getElementById("confirmAccuracy");
+          if (!confirmAccuracy.checked) {
+            showError("err-confirmAccuracy");
+            isValid = false;
+            if (!firstInvalid) firstInvalid = confirmAccuracy;
+          } else {
+            hideError("err-confirmAccuracy");
+          }
+
+          if (!isValid && firstInvalid && typeof firstInvalid.focus === "function") {
+            firstInvalid.focus();
+          }
+
+          return isValid;
+        }
+
+        // Dismiss Error Banner
+        if (dismissAlertBtn) {
+          dismissAlertBtn.addEventListener("click", () => {
+            regErrorBanner.classList.remove("visible");
+          });
+        }
+
+        // Form Submit Handler
+        regForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          regErrorBanner.classList.remove("visible");
+
+          // Bot honeypot check
+          const honeypotVal = document.getElementById("regHoneypot").value;
+          if (honeypotVal) {
+            showSuccessModal("REG-2026-9999", document.getElementById("teamName").value);
+            return;
+          }
+
+          if (!validateStep1()) {
+            btnBackStep.click();
+            return;
+          }
+
+          if (!validateStep2()) {
+            return;
+          }
+
+          const teamSize = parseInt(selectedTeamSizeInput.value, 10);
+          const members = [];
+
+          // Collect Member 2
+          members.push({
+            name: document.getElementById("member2Name").value.trim(),
+            regNo: document.getElementById("member2RegNo").value.trim()
+          });
+
+          // Collect Member 3
+          if (teamSize >= 3) {
+            members.push({
+              name: document.getElementById("member3Name").value.trim(),
+              regNo: document.getElementById("member3RegNo").value.trim()
+            });
+          }
+
+          // Collect Member 4
+          if (teamSize === 4) {
+            members.push({
+              name: document.getElementById("member4Name").value.trim(),
+              regNo: document.getElementById("member4RegNo").value.trim()
+            });
+          }
+
+          const payload = {
+            teamName: document.getElementById("teamName").value.trim(),
+            course: selectedCourseInput.value,
+            year: selectedYearInput.value,
+            leaderName: document.getElementById("leaderName").value.trim(),
+            leaderRegNo: document.getElementById("leaderRegNo").value.trim(),
+            leaderEmail: document.getElementById("leaderEmail").value.trim(),
+            leaderPhone: document.getElementById("leaderPhone").value.trim(),
+            teamSize: teamSize,
+            members: members
+          };
+
+          // Generate Unique Idempotency Key
+          const idempotencyKey = "IDEMP-" + Date.now() + "-" + Math.random().toString(36).substring(2, 9);
+
+          // Disable submit button & show cyber loading state
+          btnSubmit.disabled = true;
+          btnSubmit.classList.add("loading");
+          submitBtnText.textContent = "Submitting Registration...";
+
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 18000);
+
+            const response = await fetch("/api/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-Idempotency-Key": idempotencyKey
+              },
+              body: JSON.stringify(payload),
+              signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+              showSuccessModal(data.registration_id, payload.teamName);
+              regForm.reset();
+              // Reset chips to default 2
+              document.querySelectorAll(".chip-btn").forEach((c) => c.classList.remove("selected"));
+              const defaultSizeChip = document.querySelector('#teamSizeChips [data-value="2"]');
+              if (defaultSizeChip) defaultSizeChip.classList.add("selected");
+              selectedTeamSizeInput.value = "2";
+              updateTeamSizeCards(2);
+              selectedCourseInput.value = "";
+              selectedYearInput.value = "";
+              step2Panel.classList.remove("active");
+              step1Panel.classList.add("active");
+              stepPill2.classList.remove("active");
+              stepPill1.classList.remove("completed");
+              stepPill1.classList.add("active");
+            } else {
+              showBannerError(data.message || "Registration failed. Please check your information and try again.");
+            }
+          } catch (err) {
+            console.error("[Submission error]", err);
+            if (err.name === "AbortError") {
+              showBannerError("Request timed out. Please check your internet connection and try submitting again.");
+            } else {
+              showBannerError("Unable to reach the registration gateway. Please verify your connection or try again shortly.");
+            }
+          } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.classList.remove("loading");
+            submitBtnText.textContent = "Confirm & Submit Registration";
+          }
+        });
+
+        function showBannerError(msg) {
+          regErrorMessage.textContent = msg;
+          regErrorBanner.classList.add("visible");
+          regErrorBanner.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        function showSuccessModal(regId, teamName) {
+          modalRegId.textContent = regId;
+          modalTeamName.textContent = teamName;
+          successModal.classList.add("open");
+          document.body.style.overflow = "hidden";
+        }
+
+        // Copy Registration ID with visual feedback
+        if (copyRegIdBtn) {
+          copyRegIdBtn.addEventListener("click", () => {
+            const idText = modalRegId.textContent.trim();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(idText).then(() => {
+                copyBtnText.textContent = "Copied to Clipboard!";
+                setTimeout(() => {
+                  copyBtnText.textContent = "Copy Registration ID";
+                }, 2500);
+              });
+            } else {
+              const tempInput = document.createElement("input");
+              tempInput.value = idText;
+              document.body.appendChild(tempInput);
+              tempInput.select();
+              document.execCommand("copy");
+              document.body.removeChild(tempInput);
+              copyBtnText.textContent = "Copied to Clipboard!";
+              setTimeout(() => {
+                copyBtnText.textContent = "Copy Registration ID";
+              }, 2500);
+            }
+          });
+        }
+
+        // Close Modal
+        if (closeSuccessModalBtn) {
+          closeSuccessModalBtn.addEventListener("click", () => {
+            successModal.classList.remove("open");
+            document.body.style.overflow = "";
+            const heroSection = document.getElementById("hero");
+            if (heroSection) heroSection.scrollIntoView({ behavior: "smooth" });
+          });
+        }
+      })();
     </script>
   </body>
 </html>
